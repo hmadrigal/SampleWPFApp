@@ -13,11 +13,31 @@
         <StaticResource ResourceKey="ViewModel"/>
     </Window.DataContext>
 
-    <StackPanel Orientation="Vertical">
-        <TextBox Text="{Binding Item,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Text="{Binding Item,Mode=OneWay}" />
-        <Button Command="{Binding AddCommand,Mode=OneWay}" CommandParameter="{Binding Item}" >Add!</Button>
-        <Button Command="{Binding RemoveCommand,Mode=OneWay}" CommandParameter="{Binding ElementName=ItemList,Path=SelectedValue}">Remove</Button>
-        <ListBox x:Name="ItemList" ItemsSource="{Binding Items,Mode=OneTime}"/>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="Auto"  />
+            <RowDefinition Height="*"  />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" >Add Item:</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Item,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" >Actions:</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Button Command="{Binding AddCommand,Mode=OneWay}" CommandParameter="{Binding Item}" >Add!</Button>
+            <Button Command="{Binding RemoveCommand,Mode=OneWay}" CommandParameter="{Binding ElementName=ItemList,Path=SelectedValue}">Remove</Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" >Item List:</TextBlock>
+        <ListBox x:Name="ItemList" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Items,Mode=OneTime}"/>
+
+    </Grid>
+
+
 </Window>
