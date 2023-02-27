@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace SampleWPFApp.ViewModels
+namespace SampleWPFApp.Interactivity
 {
     public class ActionCommand<T> : ICommand
     {

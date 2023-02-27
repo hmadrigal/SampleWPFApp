@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SampleWPFApp.Interactivity;
+using System;
 using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.Linq;
